@@ -69,7 +69,16 @@ public interface IdentifiableObject {
         public int compare(IdentifiableObject first, IdentifiableObject second) {
             if (first != null && first.getDisplayName() != null
                     && second != null && second.getDisplayName() != null) {
-                return first.getDisplayName().compareTo(second.getDisplayName());
+
+                if(!Character.isLetter(first.getDisplayName().charAt(0))||!Character.isLetter(second.getDisplayName().charAt(0))){
+                    if(!Character.isDigit(first.getDisplayName().charAt(0))){
+                        return 1;
+                    }
+
+                    return 1 ;
+                }
+
+                return first.getDisplayName().compareToIgnoreCase(second.getDisplayName());
             }
 
             return 0;
